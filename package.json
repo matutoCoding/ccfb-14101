@@ -1,0 +1,26 @@
+{
+  "name": "barcode-camera-sim",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "读码相机成像仿真系统 - 快递分拣交叉带读码方案选型/布局/成像/读码统计",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@zxing/library": "^0.21.3",
+    "idb": "^8.0.0",
+    "preact": "^10.24.3"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.9.1",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.10",
+    "vitest": "^2.1.4"
+  }
+}

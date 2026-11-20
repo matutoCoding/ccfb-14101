@@ -1,0 +1,114 @@
+:root {
+  --bg: #0f1419;
+  --panel: #1a2129;
+  --panel-2: #232d38;
+  --border: #2f3b47;
+  --fg: #e6edf3;
+  --fg-dim: #93a1b0;
+  --accent: #4da3ff;
+  --accent-2: #36d399;
+  --warn: #fbbd23;
+  --bad: #f87272;
+  --mono: 'Cascadia Code', Consolas, 'Courier New', monospace;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Segoe UI', 'Microsoft YaHei', system-ui, sans-serif;
+  font-size: 14px;
+}
+#app { display: flex; min-height: 100vh; }
+
+/* 侧边导航 */
+nav.side {
+  width: 180px;
+  background: var(--panel);
+  border-right: 1px solid var(--border);
+  padding: 16px 0;
+  flex-shrink: 0;
+}
+nav.side .brand {
+  font-size: 15px;
+  font-weight: 700;
+  padding: 0 18px 16px;
+  color: var(--accent);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 10px;
+}
+nav.side a {
+  display: block;
+  padding: 11px 18px;
+  color: var(--fg-dim);
+  text-decoration: none;
+  border-left: 3px solid transparent;
+  cursor: pointer;
+}
+nav.side a:hover { background: var(--panel-2); color: var(--fg); }
+nav.side a.active { color: var(--accent); border-left-color: var(--accent); background: var(--panel-2); }
+
+main { flex: 1; padding: 24px 28px; min-width: 0; }
+h1 { font-size: 20px; margin: 0 0 4px; }
+h2 { font-size: 16px; margin: 20px 0 10px; color: var(--fg); }
+.subtitle { color: var(--fg-dim); margin: 0 0 20px; font-size: 13px; }
+
+/* 卡片与控件 */
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 16px;
+}
+.grid { display: grid; gap: 14px; }
+.grid.cols-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.grid.cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.grid.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 900px) { .grid.cols-3, .grid.cols-4 { grid-template-columns: repeat(2, 1fr); } }
+
+label.field { display: flex; flex-direction: column; gap: 5px; font-size: 12px; color: var(--fg-dim); }
+label.field span { font-weight: 600; }
+input, select, button, textarea {
+  background: var(--panel-2);
+  border: 1px solid var(--border);
+  color: var(--fg);
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 13px;
+  font-family: inherit;
+}
+input:focus, select:focus { outline: none; border-color: var(--accent); }
+input[type=range] { padding: 0; }
+button { cursor: pointer; font-weight: 600; }
+button.primary { background: var(--accent); border-color: var(--accent); color: #08111c; }
+button.primary:hover { filter: brightness(1.1); }
+button.ghost { background: transparent; }
+button:disabled { opacity: 0.45; cursor: not-allowed; }
+.row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.muted { color: var(--fg-dim); }
+.mono { font-family: var(--mono); }
+.tag { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 11px; font-weight: 700; }
+.tag.ok { background: rgba(54,211,153,.15); color: var(--accent-2); }
+.tag.bad { background: rgba(248,114,114,.15); color: var(--bad); }
+.tag.warn { background: rgba(251,189,35,.15); color: var(--warn); }
+.tag.info { background: rgba(77,163,255,.15); color: var(--accent); }
+
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { text-align: left; padding: 9px 10px; border-bottom: 1px solid var(--border); }
+th { color: var(--fg-dim); font-weight: 600; font-size: 12px; }
+td.num, th.num { text-align: right; font-family: var(--mono); }
+
+.bar { height: 8px; background: var(--panel-2); border-radius: 4px; overflow: hidden; min-width: 80px; }
+.bar > i { display: block; height: 100%; background: var(--accent); }
+.bar.good > i { background: var(--accent-2); }
+.bar.mid > i { background: var(--warn); }
+.bar.low > i { background: var(--bad); }
+
+canvas { background: #000; border-radius: 8px; display: block; max-width: 100%; }
+.scroll { overflow: auto; max-height: 70vh; }
+.pill-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.kpi { font-size: 26px; font-weight: 700; font-family: var(--mono); }
+.kpi small { font-size: 13px; color: var(--fg-dim); font-weight: 400; }
+.progress-track { height: 10px; background: var(--panel-2); border-radius: 5px; overflow: hidden; }
+.progress-track > i { display: block; height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent-2)); transition: width .2s; }
